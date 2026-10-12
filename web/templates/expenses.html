@@ -1,0 +1,36 @@
+{{define "content"}}
+<h1>Траты</h1>
+
+<p><a class="button" href="/expenses/new">Добавить трату</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Описание</th>
+      <th class="num">Сумма</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{range .Expenses}}
+    <tr>
+      <td>{{.DateString}}</td>
+      <td>{{.Description}}</td>
+      <td class="num">{{money .Amount}}</td>
+    </tr>
+    {{else}}
+    <tr>
+      <td colspan="3" class="empty">Пока нет ни одной траты.</td>
+    </tr>
+    {{end}}
+  </tbody>
+  {{if .Expenses}}
+  <tfoot>
+    <tr>
+      <th colspan="2">Итого</th>
+      <th class="num">{{money .Total}}</th>
+    </tr>
+  </tfoot>
+  {{end}}
+</table>
+{{end}}

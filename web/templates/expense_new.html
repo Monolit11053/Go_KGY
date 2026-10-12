@@ -1,0 +1,24 @@
+{{define "content"}}
+<h1>Новая трата</h1>
+
+{{if .Error}}<p class="error">{{.Error}}</p>{{end}}
+
+<form method="POST" action="/expenses">
+  <label>
+    Сумма, ₽
+    <input type="text" name="amount" inputmode="decimal" value="{{.Form.Amount}}" required autofocus>
+  </label>
+
+  <label>
+    Описание
+    <input type="text" name="description" value="{{.Form.Description}}" required>
+  </label>
+
+  <label>
+    Дата
+    <input type="date" name="date" value="{{.Form.Date}}" required>
+  </label>
+
+  <button type="submit" class="button">Добавить</button>
+</form>
+{{end}}
